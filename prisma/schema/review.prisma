@@ -1,8 +1,21 @@
-model review {
+model Review {
     id String @id @default(uuid())
     rating Int
     title String? @db.VarChar(255)
     description String? @db.VarChar(255)
+
+
+    customerId String
+    user User @relation(fields: [customerId], references: [id])
+
+    technicianServiceId String
+    technicianService TechnicianService @relation(fields: [technicianServiceId], references: [id])
+
+    bookingId String @unique
+    booking Booking @relation(fields: [bookingId], references: [id])
+
+
+
     updatedAt DateTime @updatedAt
     createdAt DateTime @default(now())
 

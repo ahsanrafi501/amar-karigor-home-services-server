@@ -1,9 +1,18 @@
-model categories {
+model Categories {
     id String @id @default(uuid())
     name String @db.VarChar(255)
     description String? @db.VarChar(255)
+
+
+
+    services Service[]
+
+
+
     updatedAt DateTime @updatedAt
     createdAt DateTime @default(now())
+
+
 
     @@map("categories")
 }

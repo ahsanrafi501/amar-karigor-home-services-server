@@ -1,4 +1,4 @@
-model payment {
+model Payment {
     id                    String          @id @default(uuid())
     amount                Float
     paymentMethod         String          @db.VarChar(255)
@@ -6,6 +6,10 @@ model payment {
     sslcommerceTranId     String          @db.VarChar(255)
     paidAt                DateTime        @default(now())
     provider              PaymentProvider @default(sslcommerz)
+
+
+    bookingId String @unique
+    booking   Booking @relation(fields: [bookingId], references: [id])
 
     updatedAt DateTime @updatedAt
     createdAt DateTime @default(now())
