@@ -1,13 +1,9 @@
-model user {
+model categories {
     id String @id @default(uuid())
     name String @db.VarChar(255)
-    email String @unique @db.VarChar(255)
-    password String @db.VarChar(255)
+    description String? @db.VarChar(255)
     updatedAt DateTime @updatedAt
     createdAt DateTime @default(now())
 
-
-
-
-    @@map("users")
+    @@map("categories")
 }

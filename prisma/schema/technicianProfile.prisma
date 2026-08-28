@@ -1,0 +1,9 @@
+model technicianProfile {
+    id String @id @default(uuid())
+    bio String?
+    experience Int?
+    updatedAt DateTime @updatedAt
+    createdAt DateTime @default(now())
+
+    @@map("technician_profiles")
+}

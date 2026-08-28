@@ -1,0 +1,10 @@
+model technicianService {
+    id String @id @default(uuid())
+    technicianId String
+    serviceId String
+    price Float
+    updatedAt DateTime @updatedAt
+    createdAt DateTime @default(now())
+
+    @@map("technician_services")
+}
