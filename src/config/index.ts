@@ -7,4 +7,6 @@ export default {
   port: Number(process.env.PORT) || 3000,
   databaseUrl: process.env.DATABASE_URL,
   appUrl: process.env.APP_URL || "http://localhost:3000",
+  bcrypt_salt_rounds: process.env.BCRYPT_SALT_ROUNDS,
+  
 };
