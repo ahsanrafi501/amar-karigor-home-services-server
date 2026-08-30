@@ -5,6 +5,7 @@ import config from "./config";
 import { userRoutes } from "./modules/user/user.routes";
 import { globalErrorHandler } from "./middleware/globalErrorHandler";
 import { notFound } from "./middleware/notFound";
+import { authRoutes } from "./auth/auth.routes";
 
 const app : Application = express();
 
@@ -22,6 +23,7 @@ app.get("/", (req: Request, res: Response) => {
 
 
 app.use("/api/user", userRoutes);
+app.use("/api/auth", authRoutes);
 
 
 

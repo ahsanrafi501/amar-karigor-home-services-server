@@ -24,7 +24,7 @@ const registerUserIntoDB = async (payload: RegisterUserPayload) => {
 
     const isExist = await prisma.user.findUnique({
         where:{
-            email: email
+            email
         }
     })
 
