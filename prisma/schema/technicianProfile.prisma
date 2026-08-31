@@ -2,19 +2,19 @@ model TechnicianProfile {
     id String @id @default(uuid())
     bio String?
     experience Int?
-    availability String? @db.VarChar(255)
-    nidNumber String? @db.VarChar(255)
+    availability String @db.VarChar(255)
+    nidNumber String @db.VarChar(255)
     certification String? @db.VarChar(255)
-    serviceArea String? @db.VarChar(255)
+    serviceArea String @db.VarChar(255)
     permanentAddress String? @db.VarChar(255)
-    presentAddress String? @db.VarChar(255)
+    presentAddress String @db.VarChar(255)
     verficationStatus VerificationStatus @default(PENDING)
 
 
 
 
     userId String @unique
-    user User @relation(fields: [userId], references: [id])
+    user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
 
     technicianService TechnicianService[]

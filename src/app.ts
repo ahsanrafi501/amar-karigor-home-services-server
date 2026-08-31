@@ -6,6 +6,9 @@ import { userRoutes } from "./modules/user/user.routes";
 import { globalErrorHandler } from "./middleware/globalErrorHandler";
 import { notFound } from "./middleware/notFound";
 import { authRoutes } from "./auth/auth.routes";
+import { technicianRoutes } from "./technician/technician.routes";
+import { auth } from "./middleware/auth";
+import { Role } from "../generated/prisma/enums";
 
 const app : Application = express();
 
@@ -24,6 +27,7 @@ app.get("/", (req: Request, res: Response) => {
 
 app.use("/api/user", userRoutes);
 app.use("/api/auth", authRoutes);
+app.use("/api/technician", auth(Role.USER), technicianRoutes);
 
 
 
