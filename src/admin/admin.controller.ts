@@ -39,22 +39,22 @@ const createCategories = catchAsync(async (req: Request, res: Response, next: Ne
         }
     })
 })
-// const heda = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
-//     const payload = req.body;
 
-//     const { id: userId } = req.user;
 
-//     const result = await prisma.service.deleteMany();
+const updateUserStatus = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
+    const { id } = req.params;
+    const { status } = req.body;
 
-//     sendResponse(res, {
-//         success: true,
-//         statusCode: httpstatus.OK,
-//         message: "Categories created successfully",
-//         data: {
-//             result
-//         }
-//     })
-// })
+    const updatedUser = await adminService.updateUserStatusInDB(id as string, status);
+    sendResponse(res, {
+        success: true,
+        statusCode: httpstatus.OK,
+        message: "User status updated successfully",
+        data: {
+            updatedUser
+        }
+    })
+})
 
 
 
@@ -64,5 +64,5 @@ const createCategories = catchAsync(async (req: Request, res: Response, next: Ne
 export const adminController = {
     createService,
     createCategories,
-    // heda
+    updateUserStatus
 }

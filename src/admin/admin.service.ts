@@ -1,4 +1,4 @@
-import { Role } from "../../generated/prisma/enums"
+import { Role, UserStatus } from "../../generated/prisma/enums"
 import { prisma } from "../lib/prisma"
 
 const createServiceIntoDB = async(payload: any, userId: string) => {
@@ -60,8 +60,52 @@ const CreateCategoriesIntoDB = async(payload: any, userId: string) => {
 }
 
 
+
+const updateUserStatusInDB = async(id: string, status: UserStatus) => {
+    const user = await prisma.user.findUnique({
+        where: {
+            id
+        }
+    })
+
+
+    if(!user){
+        throw new Error("User not found")
+    }
+
+    if(user.role === Role.ADMIN){
+        throw new Error("You are not authorized to update admin status")
+    }
+
+    if(user.status === status){
+        throw new Error(`User is already ${status}`)
+    }
+
+    
+    const updatedUser = await prisma.user.update({
+        where: {
+            id
+        },
+        data: {
+            status
+        }
+    })
+
+    return updatedUser;
+}
+
+
+
+
+
+
+
+
+
+
 export const adminService = {
     createServiceIntoDB,
-    CreateCategoriesIntoDB
+    CreateCategoriesIntoDB,
+    updateUserStatusInDB
 
 }

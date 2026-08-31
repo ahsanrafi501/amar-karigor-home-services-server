@@ -9,8 +9,7 @@ const router = Router();
 
 router.post("/create-service", adminController.createService)
 router.post("/create-categories", adminController.createCategories)
-// router.delete('/', adminController.heda)
-
+router.patch("/users/:id", auth(Role.ADMIN), adminController.updateUserStatus)
 
 
 
