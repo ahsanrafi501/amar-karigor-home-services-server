@@ -4,7 +4,7 @@ import { authController } from "./auth.controller";
 const router = Router();
 
 
-router.get("/login", authController.loginUser)
+router.post("/login", authController.loginUser)
 router.get("/refresh-token", authController.refreshToken)
 
 
