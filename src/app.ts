@@ -27,7 +27,7 @@ app.get("/", (req: Request, res: Response) => {
 
 app.use("/api/user", userRoutes);
 app.use("/api/auth", authRoutes);
-app.use("/api/technician", auth(Role.USER), technicianRoutes);
+app.use("/api/technician", auth(Role.USER, Role.TECHNICIAN), technicianRoutes);
 
 
 

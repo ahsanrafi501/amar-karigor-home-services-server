@@ -1,10 +1,12 @@
 model Booking {
     id String @id @default(uuid())
-    status String @db.VarChar(255)
+    status BookingStatus @default(PENDING)
     startTime DateTime
     endTime DateTime
 
-
+    cancelledAt DateTime?
+    cancelledBy String?
+    cancellationReason String? @db.VarChar(500)
 
     payment Payment?
 
@@ -14,8 +16,8 @@ model Booking {
     customerId String
     customer User @relation(fields: [customerId], references: [id])
 
-    technicianId String
-    technicianProfile TechnicianProfile @relation(fields: [technicianId], references: [id])
+    technicianProfileId String
+    technicianProfile TechnicianProfile @relation(fields: [technicianProfileId], references: [id])
 
     review Review?
 
