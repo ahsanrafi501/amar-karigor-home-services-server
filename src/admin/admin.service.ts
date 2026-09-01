@@ -96,6 +96,58 @@ const updateUserStatusInDB = async(id: string, status: UserStatus) => {
 
 
 
+const getAllBookingFromDB = async(UserId: string) => {
+
+
+    const loggedInUser = await prisma.user.findUnique({
+        where:{
+            id: UserId
+        }
+    })
+
+    if(!loggedInUser){
+        throw new Error("Please login to access this route")
+    }
+
+    if(loggedInUser.role != Role.ADMIN){
+        throw new Error("Unauthorized access")
+    }
+
+    if(loggedInUser.status === "SUSPENDED"){
+        throw new Error("You are suspended. Please contact with support team.")
+    }
+
+    const bookings = await prisma.booking.findMany()
+    return bookings
+}
+
+
+const getAllCategoriesFromDB = async(UserId: string) => {
+
+
+    const loggedInUser = await prisma.user.findUnique({
+        where:{
+            id: UserId
+        }
+    })
+
+    if(!loggedInUser){
+        throw new Error("Please login to access this route")
+    }
+
+    if(loggedInUser.role != Role.ADMIN){
+        throw new Error("Unauthorized access")
+    }
+
+    if(loggedInUser.status === "SUSPENDED"){
+        throw new Error("You are suspended. Please contact with support team.")
+    }
+
+    const categories = await prisma.categories.findMany()
+    return categories;
+}
+
+
 
 
 
@@ -106,6 +158,7 @@ const updateUserStatusInDB = async(id: string, status: UserStatus) => {
 export const adminService = {
     createServiceIntoDB,
     CreateCategoriesIntoDB,
-    updateUserStatusInDB
-
+    updateUserStatusInDB,
+    getAllBookingFromDB,
+    getAllCategoriesFromDB
 }

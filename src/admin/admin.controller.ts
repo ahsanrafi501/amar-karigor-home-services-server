@@ -57,6 +57,33 @@ const updateUserStatus = catchAsync(async (req: Request, res: Response, next: Ne
 })
 
 
+const getAllBooking = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
+    const { id: userId } = req.user;
+    const bookings = await adminService.getAllBookingFromDB(userId);
+    sendResponse(res, {
+        success: true,
+        statusCode: httpstatus.OK,
+        message: "Bookings fetched successfully",
+        data: {
+            bookings
+        }
+    })
+})
+
+
+const getAllCategories = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
+    const { id: userId } = req.user;
+    const categories = await adminService.getAllCategoriesFromDB(userId);
+    sendResponse(res, {
+        success: true,
+        statusCode: httpstatus.OK,
+        message: "Categories fetched successfully",
+        data: {
+            categories
+        }
+    })
+})
+
 
 
 
@@ -64,5 +91,7 @@ const updateUserStatus = catchAsync(async (req: Request, res: Response, next: Ne
 export const adminController = {
     createService,
     createCategories,
-    updateUserStatus
+    updateUserStatus,
+    getAllBooking,
+    getAllCategories
 }
