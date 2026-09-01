@@ -8,7 +8,7 @@ model TechnicianProfile {
     serviceArea String @db.VarChar(255)
     permanentAddress String? @db.VarChar(255)
     presentAddress String @db.VarChar(255)
-    verficationStatus VerificationStatus @default(PENDING)
+    verificationStatus VerificationStatus @default(PENDING)
 
 
 

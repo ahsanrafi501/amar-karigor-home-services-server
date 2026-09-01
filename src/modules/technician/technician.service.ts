@@ -1,5 +1,5 @@
-import { BookingStatus } from "../../generated/prisma/enums";
-import { prisma } from "../lib/prisma"
+import { BookingStatus, Role, UserStatus, VerificationStatus } from "../../../generated/prisma/enums";
+import { prisma } from "../../lib/prisma";
 import { ICancelBookingPayload, ITechnicianProfile, ITechnicianProfileUpdate } from "./technician.interface"
 
 const applyAsTechnicianIntoDB = async (payload: ITechnicianProfile, id: string) => {
@@ -89,6 +89,12 @@ const updateTechnicianAvailabilityIntoDB = async (availability: string, id: stri
     return updatedProfile;
 }
 
+
+
+
+
+
+
 const getTechnicianBookingsFromDB = async (id: string) => {
 
 
@@ -116,7 +122,7 @@ const getTechnicianBookingsFromDB = async (id: string) => {
         throw new Error("You are not authorized to access this resource")
     }
 
-    if (user.technicianProfile?.verficationStatus !== "VERIFIED") {
+    if (user.technicianProfile?.verificationStatus !== "VERIFIED") {
         throw new Error("Your technician profile is not verified yet. Please wait for the verification process to complete.")
     }
 
@@ -155,7 +161,7 @@ const updateBookingStatusIntoDB = async (bookingId: string, userId: string, payl
         throw new Error("User not exists")
     }
 
-    if (user.status === "SUSPENDED") {
+    if (user.status === UserStatus.SUSPENDED) {
         throw new Error("Your account is suspended. Please contact support.")
     }
 
@@ -163,11 +169,11 @@ const updateBookingStatusIntoDB = async (bookingId: string, userId: string, payl
         throw new Error("Technician profile doesn't exist. Please create your technician profile first.")
     }
 
-    if (user.role !== "TECHNICIAN") {
+    if (user.role !== Role.TECHNICIAN) {
         throw new Error("You are not authorized to access this resource")
     }
 
-    if (user.technicianProfile?.verficationStatus !== "VERIFIED") {
+    if (user.technicianProfile?.verificationStatus !== VerificationStatus.VERIFIED) {
         throw new Error("Your technician profile is not verified yet. Please wait for the verification process to complete.")
     }
 

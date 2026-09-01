@@ -1,8 +1,9 @@
 import { NextFunction, Request, Response } from "express";
-import { catchAsync } from "../utils/catchAsync";
+import { catchAsync } from "../../utils/catchAsync";
 import { technicianService } from "./technician.service";
-import { sendResponse } from "../utils/sendResponse";
+import { sendResponse } from "../../utils/sendResponse";
 import httpstatus from "http-status"
+
 
 const applyAsTechnician = catchAsync(async(req: Request, res: Response, next: NextFunction) =>{
     const payload = req.body;
@@ -60,7 +61,7 @@ const getTechnicianBookings = catchAsync(async(req: Request, res: Response, next
     sendResponse(res, {
         success: true,
         statusCode: httpstatus.OK,
-        message: "Your profile updated successfully",
+        message: "Your booking fetched successfully",
         data: {
             result
         }
@@ -83,6 +84,9 @@ const updateBookingStatus = catchAsync(async(req: Request, res: Response, next: 
         }
     })
 })
+
+
+
 
 
 export const technicianController = {

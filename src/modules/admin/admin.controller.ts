@@ -1,9 +1,11 @@
 import { NextFunction, Request, Response } from "express";
-import { catchAsync } from "../utils/catchAsync";
+import { catchAsync } from "../../utils/catchAsync";
 import { adminService } from "./admin.service";
-import { sendResponse } from "../utils/sendResponse";
+import { sendResponse } from "../../utils/sendResponse";
 import httpstatus from "http-status"
-import { prisma } from "../lib/prisma";
+import { VerificationStatus } from "../../../generated/prisma/enums";
+
+
 
 const createService = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
     const payload = req.body;
@@ -85,6 +87,23 @@ const getAllCategories = catchAsync(async (req: Request, res: Response, next: Ne
 })
 
 
+const acceptTechnician = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
+    const { id: userId } = req.user;
+    const { technicianId } = req.params;
+        const {verificationStatus} = req.body;
+    const result = await adminService.acceptTechnicianInDB(technicianId as string, userId as string, verificationStatus as VerificationStatus);
+
+    sendResponse(res, {
+        success: true,
+        statusCode: httpstatus.OK,
+        message: "Technician accepted successfully",
+        data: {
+            result
+        }
+    })
+})
+
+
 
 
 
@@ -93,5 +112,6 @@ export const adminController = {
     createCategories,
     updateUserStatus,
     getAllBooking,
-    getAllCategories
+    getAllCategories,
+    acceptTechnician,
 }

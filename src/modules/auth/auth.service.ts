@@ -1,10 +1,13 @@
 import z, { email } from "zod";
 import { LoginUserPayload } from "./auth.interface";
-import { prisma } from "../lib/prisma";
 import bcrypt from "bcryptjs";
-import { jwtUtils } from "../utils/jwt";
-import config from "../config";
+import config from "../../config";
 import { JwtPayload, SignOptions } from "jsonwebtoken";
+import { jwtUtils } from "../../utils/jwt";
+import { prisma } from "../../lib/prisma";
+
+
+
 
 const loginSchema = z.object({
     email: z.string({error: "Email required"}).trim().lowercase().email("Email is invalid"),
