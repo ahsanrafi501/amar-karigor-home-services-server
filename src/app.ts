@@ -10,6 +10,7 @@ import { Role } from "../generated/prisma/enums";
 import { adminRoutes } from "./modules/admin/admin.routes";
 import { notFound } from "./middleware/notFound";
 import { globalErrorHandler } from "./middleware/globalErrorHandler";
+import { bookingRoutes } from "./modules/booking/booking.routes";
 
 
 
@@ -30,8 +31,9 @@ app.get("/", (req: Request, res: Response) => {
 
 app.use("/api/user", userRoutes);
 app.use("/api/auth", authRoutes);
-app.use("/api/technician", auth(Role.USER, Role.TECHNICIAN), technicianRoutes);
+app.use("/api/technician", auth(Role.USER, Role.TECHNICIAN, Role.ADMIN), technicianRoutes);
 app.use("/api/admin", auth(Role.ADMIN), adminRoutes);
+app.use("/api/booking", auth(Role.USER, Role.TECHNICIAN, Role.ADMIN), bookingRoutes);
 
 
 

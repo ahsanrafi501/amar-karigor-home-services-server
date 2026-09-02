@@ -3,6 +3,7 @@ import { catchAsync } from "../../utils/catchAsync";
 import { technicianService } from "./technician.service";
 import { sendResponse } from "../../utils/sendResponse";
 import httpstatus from "http-status"
+import { ITechnicianOfferedServices } from "./technician.interface";
 
 
 const applyAsTechnician = catchAsync(async(req: Request, res: Response, next: NextFunction) =>{
@@ -87,6 +88,31 @@ const updateBookingStatus = catchAsync(async(req: Request, res: Response, next: 
 
 
 
+const createOfferedServicesByTechnician = catchAsync(async(req: Request, res: Response, next: NextFunction) =>{
+    const {id: userId} = req.user;
+    const payload = req.body;
+
+    const result = await technicianService.getTechnicianOfferedServicesFromDB(userId as string, payload as ITechnicianOfferedServices)
+
+    sendResponse(res, {
+        success: true,
+        statusCode: httpstatus.OK,
+        message: "Your offered services fetched successfully",
+        data: {
+            result
+        }
+    })
+})
+
+
+
+
+
+
+
+
+
+
 
 
 export const technicianController = {
@@ -94,6 +120,7 @@ export const technicianController = {
     updateTechnicianProfile,
     updateTechnicianAvailability,
     getTechnicianBookings,
-    updateBookingStatus
+    updateBookingStatus,
+    createOfferedServicesByTechnician,
 
 }

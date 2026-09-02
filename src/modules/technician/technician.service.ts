@@ -1,6 +1,6 @@
 import { BookingStatus, Role, UserStatus, VerificationStatus } from "../../../generated/prisma/enums";
 import { prisma } from "../../lib/prisma";
-import { ICancelBookingPayload, ITechnicianProfile, ITechnicianProfileUpdate } from "./technician.interface"
+import { ICancelBookingPayload, ITechnicianOfferedServices, ITechnicianProfile, ITechnicianProfileUpdate } from "./technician.interface"
 
 const applyAsTechnicianIntoDB = async (payload: ITechnicianProfile, id: string) => {
     const result = await prisma.technicianProfile.create({
@@ -226,11 +226,95 @@ const updateBookingStatusIntoDB = async (bookingId: string, userId: string, payl
 }
 
 
+const getTechnicianOfferedServicesFromDB = async (
+    userId: string,
+    payload: ITechnicianOfferedServices
+) => {
+    const user = await prisma.user.findUnique({
+        where: {
+            id: userId
+        },
+        include: {
+            technicianProfile: true
+        }
+    })
+
+    if (!user) {
+        throw new Error("User does not exist")
+    }
+
+    if(!user.technicianProfile){
+        throw new Error("Technician profile doesn't exist. Please create your technician profile first.")
+    }
+
+    if (user.status === UserStatus.SUSPENDED) {
+        throw new Error(
+            "Your account is suspended. Please contact support."
+        )
+    }
+
+
+    if (user.role === Role.USER) {
+        throw new Error(
+            "You are not authorized to access this resource"
+        )
+    }
+
+    if (user.role === Role.TECHNICIAN) {
+        if (!user.technicianProfile) {
+            throw new Error(
+                "Technician profile doesn't exist. Please create your technician profile first."
+            )
+        }
+
+        if (
+            user.technicianProfile.verificationStatus !==
+            VerificationStatus.VERIFIED
+        ) {
+            throw new Error(
+                "Your technician profile is not verified yet. Please wait for the verification process to complete."
+            )
+        }
+    }
+
+    const price = Number(payload?.price);
+
+    const offeredServices = await prisma.technicianService.create({
+        data: {
+            technicianId: user.technicianProfile.id,
+            serviceId: payload.serviceId,
+            price,
+        }
+    })
+
+    return offeredServices
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 export const technicianService = {
     applyAsTechnicianIntoDB,
     updateTechnicianProfileIntoDB,
     updateTechnicianAvailabilityIntoDB,
     getTechnicianBookingsFromDB,
-    updateBookingStatusIntoDB
+    updateBookingStatusIntoDB,
+    getTechnicianOfferedServicesFromDB,
 }

@@ -24,3 +24,10 @@ export interface ICancelBookingPayload {
     status: string;
     cancellationReason: string;
 }
+
+
+export interface ITechnicianOfferedServices {
+  technicianId: string;
+  serviceId: string;
+  price: number;
+}
