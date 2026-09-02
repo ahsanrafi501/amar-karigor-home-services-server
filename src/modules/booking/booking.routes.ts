@@ -3,7 +3,7 @@ import { bookingController } from "./booking.controller";
 
 const router = Router();
 
-router.post("/", bookingController.createNewBookings);
+router.post("/create/:id", bookingController.createNewBookings);
 
 
 

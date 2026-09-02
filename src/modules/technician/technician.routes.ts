@@ -7,8 +7,8 @@ route.post("/apply", technicianController.applyAsTechnician);
 route.put("/update", technicianController.updateTechnicianProfile);
 route.put("/availability", technicianController.updateTechnicianAvailability);
 route.get("/bookings", technicianController.getTechnicianBookings);
-route.patch("/bookings/:id", technicianController.updateBookingStatus);
-route.post("/offered-services", technicianController.createOfferedServicesByTechnician);
+route.patch("/bookings/:bookingId", technicianController.updateBookingStatus);
+route.post("/offered-services/:id", technicianController.createOfferedServicesByTechnician);
 
 
 export const technicianRoutes = route;

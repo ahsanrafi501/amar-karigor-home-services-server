@@ -1,6 +1,6 @@
 import { BookingStatus, Role, UserStatus, VerificationStatus } from "../../../generated/prisma/enums";
 import { prisma } from "../../lib/prisma";
-import { ICancelBookingPayload, ITechnicianOfferedServices, ITechnicianProfile, ITechnicianProfileUpdate } from "./technician.interface"
+import { ICancelBookingPayload, ITechnicianProfile, ITechnicianProfileUpdate } from "./technician.interface"
 
 const applyAsTechnicianIntoDB = async (payload: ITechnicianProfile, id: string) => {
     const result = await prisma.technicianProfile.create({
@@ -192,6 +192,10 @@ const updateBookingStatusIntoDB = async (bookingId: string, userId: string, payl
         throw new Error("You are not authorized to update this booking status")
     }
 
+    if(payload.status !== BookingStatus.CANCELLED && payload.status !== BookingStatus.COMPLETED && payload.status !== BookingStatus.CONFIRMED && payload.status !== BookingStatus.IN_PROGRESS && payload.status !== BookingStatus.PENDING){
+        throw new Error("Invalid booking status")
+    }
+
 
     if (payload.status === BookingStatus.CANCELLED) {
         const updatedBooking = await prisma.booking.update({
@@ -219,16 +223,17 @@ const updateBookingStatusIntoDB = async (bookingId: string, userId: string, payl
                     status: payload.status
                 }
             })
-
+            console.log("UPDATED BOOKING:", updatedBooking)
             return updatedBooking;
         }
     }
 }
 
 
-const getTechnicianOfferedServicesFromDB = async (
+const createTechnicianOfferedServicesFromDB = async (
     userId: string,
-    payload: ITechnicianOfferedServices
+    price: number,
+    serviceId: string
 ) => {
     const user = await prisma.user.findUnique({
         where: {
@@ -243,16 +248,11 @@ const getTechnicianOfferedServicesFromDB = async (
         throw new Error("User does not exist")
     }
 
-    if(!user.technicianProfile){
-        throw new Error("Technician profile doesn't exist. Please create your technician profile first.")
-    }
-
     if (user.status === UserStatus.SUSPENDED) {
         throw new Error(
             "Your account is suspended. Please contact support."
         )
     }
-
 
     if (user.role === Role.USER) {
         throw new Error(
@@ -277,13 +277,26 @@ const getTechnicianOfferedServicesFromDB = async (
         }
     }
 
-    const price = Number(payload?.price);
+    const offerAlreadyExists = await prisma.technicianService.findFirst({
+        where: {
+            technicianId: user.technicianProfile!.id,
+            serviceId: serviceId
+        }
+    })
+
+    if (offerAlreadyExists) {
+        throw new Error("You have already offered this service")
+    }
+
+    if (price <= 0) {
+        throw new Error("Price must be greater than 0")
+    }
 
     const offeredServices = await prisma.technicianService.create({
         data: {
-            technicianId: user.technicianProfile.id,
-            serviceId: payload.serviceId,
-            price,
+            technicianId: user.technicianProfile!.id,
+            serviceId,
+            price
         }
     })
 
@@ -316,5 +329,5 @@ export const technicianService = {
     updateTechnicianAvailabilityIntoDB,
     getTechnicianBookingsFromDB,
     updateBookingStatusIntoDB,
-    getTechnicianOfferedServicesFromDB,
+    createTechnicianOfferedServicesFromDB,
 }

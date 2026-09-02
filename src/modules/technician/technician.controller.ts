@@ -3,7 +3,6 @@ import { catchAsync } from "../../utils/catchAsync";
 import { technicianService } from "./technician.service";
 import { sendResponse } from "../../utils/sendResponse";
 import httpstatus from "http-status"
-import { ITechnicianOfferedServices } from "./technician.interface";
 
 
 const applyAsTechnician = catchAsync(async(req: Request, res: Response, next: NextFunction) =>{
@@ -70,7 +69,7 @@ const getTechnicianBookings = catchAsync(async(req: Request, res: Response, next
 })
 
 const updateBookingStatus = catchAsync(async(req: Request, res: Response, next: NextFunction) =>{
-    const {id: userId, role} = req.user;
+    const {id: userId} = req.user;
     const {bookingId} = req.params;
     const payload = req.body;
 
@@ -79,7 +78,7 @@ const updateBookingStatus = catchAsync(async(req: Request, res: Response, next: 
     sendResponse(res, {
         success: true,
         statusCode: httpstatus.OK,
-        message: "Your profile updated successfully",
+        message: "Booking status updated successfully",
         data: {
             result
         }
@@ -90,14 +89,16 @@ const updateBookingStatus = catchAsync(async(req: Request, res: Response, next: 
 
 const createOfferedServicesByTechnician = catchAsync(async(req: Request, res: Response, next: NextFunction) =>{
     const {id: userId} = req.user;
-    const payload = req.body;
+    const {price: priceString} = req.body;
+    const price = Number(priceString);
+    const {id: serviceId} = req.params;
 
-    const result = await technicianService.getTechnicianOfferedServicesFromDB(userId as string, payload as ITechnicianOfferedServices)
+    const result = await technicianService.createTechnicianOfferedServicesFromDB(userId as string, price as number, serviceId as string)
 
     sendResponse(res, {
         success: true,
         statusCode: httpstatus.OK,
-        message: "Your offered services fetched successfully",
+        message: "Your offered services created successfully",
         data: {
             result
         }

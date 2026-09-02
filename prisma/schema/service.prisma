@@ -6,7 +6,6 @@ model Service {
 
 
     technicianServices TechnicianService[]
-    bookings Booking[]
 
     categoryId String
     category Categories @relation(fields: [categoryId], references: [id])
