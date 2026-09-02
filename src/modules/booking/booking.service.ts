@@ -73,6 +73,82 @@ const createNewBookingsInDB = async (userId: string, technicianOfferedServiceId:
     
 }
 
+
+
+
+const getUserBookingsFromDB = async (userId: string) => {
+    const user = await prisma.user.findUnique({
+        where: {
+            id: userId
+        }
+    })
+
+    if(!user){
+        throw new Error("User not exists")
+    }
+
+    if(user.status !== "ACTIVE"){
+        throw new Error("Your account is not active. Please contact support for assistance.")
+    }
+
+    const bookings = await prisma.booking.findMany({
+        where: {
+            customerId: userId
+        },
+        include: {
+            TechnicianService: true,
+            technicianProfile: true
+        }
+    })
+
+    return bookings;
+}
+
+
+
+
+
+
+const getUserBookingsByIdFromDB = async (userId: string, bookingId: string) => {
+    const user = await prisma.user.findUnique({
+        where: {
+            id: userId
+        }
+    })
+
+    if(!user){
+        throw new Error("User not exists")
+    }
+
+    if(user.status !== "ACTIVE"){
+        throw new Error("Your account is not active. Please contact support for assistance.")
+    }
+
+    const booking = await prisma.booking.findFirst({
+        where: {
+            id: bookingId,
+            customerId: userId
+        },
+        include: {
+            TechnicianService: true,
+            technicianProfile: true
+        }
+    })
+
+    if(!booking){
+        throw new Error("Booking not found")
+    }
+
+    return booking;
+}
+
+
+
+
+
+
 export const bookingService = {
-    createNewBookingsInDB
+    createNewBookingsInDB,
+    getUserBookingsFromDB,
+    getUserBookingsByIdFromDB
 }
