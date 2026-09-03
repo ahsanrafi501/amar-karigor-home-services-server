@@ -11,7 +11,8 @@ const getAllServicesFromDB = async (
             service: type
                 ? {
                       category: {
-                          name: type,
+                          contains: type,
+                          mode: "insensitive",
                       },
                   }
                 : undefined,
