@@ -12,6 +12,7 @@ import { notFound } from "./middleware/notFound";
 import { globalErrorHandler } from "./middleware/globalErrorHandler";
 import { bookingRoutes } from "./modules/booking/booking.routes";
 import { reviewRoutes } from "./modules/review/review.routes";
+import { serviceRoutes } from "./modules/service/service.routes";
 
 
 
@@ -32,6 +33,7 @@ app.get("/", (req: Request, res: Response) => {
 
 app.use("/api/user", userRoutes);
 app.use("/api/auth", authRoutes);
+app.use("/api/services", serviceRoutes);
 app.use("/api/technician", auth(Role.USER, Role.TECHNICIAN, Role.ADMIN), technicianRoutes);
 app.use("/api/admin", auth(Role.ADMIN), adminRoutes);
 app.use("/api/booking", auth(Role.USER, Role.TECHNICIAN, Role.ADMIN), bookingRoutes);
