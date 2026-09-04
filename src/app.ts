@@ -35,7 +35,7 @@ app.use("/api/user", userRoutes);
 app.use("/api/all-technicians", technicianRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/services", serviceRoutes);
-app.use("/api/technician", auth(Role.USER, Role.TECHNICIAN, Role.ADMIN), technicianRoutes);
+app.use("/api/technician", technicianRoutes);
 app.use("/api/admin", auth(Role.ADMIN), adminRoutes);
 app.use("/api/booking", auth(Role.USER, Role.TECHNICIAN, Role.ADMIN), bookingRoutes);
 app.use("/api/review", auth(Role.USER, Role.ADMIN), reviewRoutes)

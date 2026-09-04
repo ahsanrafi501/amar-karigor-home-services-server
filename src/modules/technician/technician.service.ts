@@ -1,6 +1,89 @@
 import { BookingStatus, Role, UserStatus, VerificationStatus } from "../../../generated/prisma/enums";
 import { prisma } from "../../lib/prisma";
+import { catchAsync } from "../../utils/catchAsync";
 import { ICancelBookingPayload, ITechnicianProfile, ITechnicianProfileUpdate } from "./technician.interface"
+
+
+const getAllTechnicianProfileFromDB = async (
+    serviceArea: string,
+    experience: string,
+    rating: string
+) => {
+    const technicianProfile = await prisma.technicianProfile.findMany({
+        where: {
+            serviceArea: serviceArea
+                ? {
+                      contains: serviceArea,
+                      mode: "insensitive",
+                  }
+                : undefined,
+
+            experience: experience
+                ? {
+                      gte: parseInt(experience),
+                  }
+                : undefined,
+        },
+
+        include: {
+            user: {
+                select: {
+                    id: true,
+                    name: true,
+                    email: true,
+                    role: true,
+                },
+            },
+
+            technicianService: {
+                include: {
+                    service: {
+                        include: {
+                            category: true,
+                        },
+                    },
+
+                    reviews: true,
+                },
+            },
+        },
+    });
+
+    // Rating filter
+    if (rating) {
+        const minimumRating = parseFloat(rating);
+
+        return technicianProfile.filter((profile) => {
+            // Get all reviews from all technician services
+            const reviews = profile.technicianService.flatMap(
+                (technicianService) => technicianService.reviews
+            );
+
+            // No reviews
+            if (reviews.length === 0) {
+                return false;
+            }
+
+            // Calculate total rating
+            const totalRating = reviews.reduce(
+                (sum, review) => sum + review.rating,
+                0
+            );
+
+            // Calculate average rating
+            const averageRating =
+                totalRating / reviews.length;
+
+            // Check minimum rating
+            return averageRating >= minimumRating;
+        });
+    }
+
+    return technicianProfile;
+};
+
+
+
 
 const applyAsTechnicianIntoDB = async (payload: ITechnicianProfile, id: string) => {
     const result = await prisma.technicianProfile.create({
@@ -330,4 +413,5 @@ export const technicianService = {
     getTechnicianBookingsFromDB,
     updateBookingStatusIntoDB,
     createTechnicianOfferedServicesFromDB,
+    getAllTechnicianProfileFromDB
 }

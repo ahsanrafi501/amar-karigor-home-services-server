@@ -5,6 +5,32 @@ import { sendResponse } from "../../utils/sendResponse";
 import httpstatus from "http-status"
 
 
+
+const getAllTechnicianProfile = catchAsync(async(req: Request, res: Response, next:NextFunction) => {
+    const {experience, serviceArea, ratings } = req.query;
+    const result = await technicianService.getAllTechnicianProfileFromDB(serviceArea as string, experience as string, ratings as string);
+
+
+    sendResponse(res, {
+        success: true,
+        statusCode: httpstatus.OK,
+        message: "All technician's profile fetched successfully",
+        data:{
+            result
+        }
+    })
+})
+
+
+
+
+
+
+
+
+
+
+
 const applyAsTechnician = catchAsync(async(req: Request, res: Response, next: NextFunction) =>{
     const payload = req.body;
     const {id} = req.user;
@@ -123,5 +149,6 @@ export const technicianController = {
     getTechnicianBookings,
     updateBookingStatus,
     createOfferedServicesByTechnician,
+    getAllTechnicianProfile
 
 }

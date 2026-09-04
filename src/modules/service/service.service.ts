@@ -10,59 +10,63 @@ const getAllServicesFromDB = async (
             // Type/category filter
             service: type
                 ? {
-                      category: {
-                          contains: type,
-                          mode: "insensitive",
-                      },
-                  }
+                    category: {
+                        is: {
+                            name: {
+                                contains: type,
+                                mode: "insensitive",
+                            }
+                        }
+                    }
+                }
                 : undefined,
 
-            // Location filter
-            technicianProfile: location
-                ? {
-              serviceArea: {
-                  contains: location,
-                  mode: "insensitive",
-              },
-          }
+    // Location filter
+    technicianProfile: location
+        ? {
+            serviceArea: {
+                contains: location,
+                mode: "insensitive",
+            },
+        }
         : undefined,
         },
 
+include: {
+    service: {
         include: {
-            service: {
-                include: {
-                    category: true,
+            category: true,
                 },
-            },
+    },
 
-            technicianProfile: true,
+    technicianProfile: true,
 
-            reviews: true,
+        reviews: true,
         },
     });
 
-    // Rating filter
-    if (rating) {
-        const minimumRating = parseFloat(rating);
+// Rating filter
+if (rating) {
+    const minimumRating = parseFloat(rating);
 
-        return services.filter((technicianService) => {
-            if (technicianService.reviews.length === 0) {
-                return false;
-            }
+    return services.filter((technicianService) => {
+        if (technicianService.reviews.length === 0) {
+            return false;
+        }
 
-            const totalRating = technicianService.reviews.reduce(
-                (sum, review) => sum + review.rating,
-                0
-            );
+        const totalRating = technicianService.reviews.reduce(
+            (sum, review) => sum + review.rating,
+            0
+        );
 
-            const averageRating =
-                totalRating / technicianService.reviews.length;
+        const averageRating =
+            totalRating / technicianService.reviews.length;
 
-            return averageRating >= minimumRating;
-        });
-    }
+        return averageRating >= minimumRating;
+    });
+}
 
-    return services;
+return services;
 };
 
 export const serviceService = {
