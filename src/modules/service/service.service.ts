@@ -69,6 +69,26 @@ if (rating) {
 return services;
 };
 
+
+
+const getAllServiceCategoriesFromDB = async () => {
+    const result = await prisma.categories.findMany();
+    return result;
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const serviceService = {
     getAllServicesFromDB,
+    getAllServiceCategoriesFromDB
 };

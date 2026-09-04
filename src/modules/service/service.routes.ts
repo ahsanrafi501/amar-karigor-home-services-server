@@ -5,6 +5,7 @@ const router = Router();
 
 
 router.get("/", serviceController.getAllServices);
+router.get("/categories", serviceController.getAllServiceCategories);
 
 
 
