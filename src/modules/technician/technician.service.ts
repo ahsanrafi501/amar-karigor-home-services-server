@@ -394,7 +394,39 @@ const createTechnicianOfferedServicesFromDB = async (
 
 
 
+const getTechnicianProfileWithReviewsFromDB = async (id: string) => {
+    const technicianProfile = await prisma.technicianProfile.findUnique({
+        where: {
+            id
+        },
+        include: {
+            user: {
+                select: {
+                    id: true,
+                    name: true,
+                    email: true,
+                    role: true
+                }
+            },
+            technicianService: {
+                include: {
+                    service: {
+                        include: {
+                            category: true
+                        }
+                    },
+                    reviews: true
+                }
+            }
+        }
+    })
 
+    if (!technicianProfile) {
+        throw new Error("Technician profile not found")
+    }
+
+    return technicianProfile;
+}
 
 
 
@@ -413,5 +445,6 @@ export const technicianService = {
     getTechnicianBookingsFromDB,
     updateBookingStatusIntoDB,
     createTechnicianOfferedServicesFromDB,
-    getAllTechnicianProfileFromDB
+    getAllTechnicianProfileFromDB,
+    getTechnicianProfileWithReviewsFromDB
 }

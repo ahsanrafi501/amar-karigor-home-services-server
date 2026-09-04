@@ -24,13 +24,6 @@ const getAllTechnicianProfile = catchAsync(async(req: Request, res: Response, ne
 
 
 
-
-
-
-
-
-
-
 const applyAsTechnician = catchAsync(async(req: Request, res: Response, next: NextFunction) =>{
     const payload = req.body;
     const {id} = req.user;
@@ -135,7 +128,19 @@ const createOfferedServicesByTechnician = catchAsync(async(req: Request, res: Re
 
 
 
+const getTechnicianProfileWithReviews = catchAsync(async(req: Request, res: Response, next: NextFunction) => {
+    const {id} = req.params;
+    const result = await technicianService.getTechnicianProfileWithReviewsFromDB(id as string);
 
+    sendResponse(res, {
+        success: true,
+        statusCode: httpstatus.OK,
+        message: "Technician profile fetched successfully",
+        data:{
+            result
+        }
+    })
+})
 
 
 
@@ -149,6 +154,7 @@ export const technicianController = {
     getTechnicianBookings,
     updateBookingStatus,
     createOfferedServicesByTechnician,
-    getAllTechnicianProfile
+    getAllTechnicianProfile,
+    getTechnicianProfileWithReviews
 
 }

@@ -12,6 +12,7 @@ route.get("/bookings", auth(Role.USER, Role.TECHNICIAN, Role.ADMIN), technicianC
 route.patch("/bookings/:bookingId", auth(Role.USER, Role.TECHNICIAN, Role.ADMIN), technicianController.updateBookingStatus);
 route.post("/offered-services/:id", auth(Role.USER, Role.TECHNICIAN, Role.ADMIN), technicianController.createOfferedServicesByTechnician);
 route.get("/profiles", technicianController.getAllTechnicianProfile);
+route.get("/profiles/:id", technicianController.getTechnicianProfileWithReviews);
 
 
 export const technicianRoutes = route;
