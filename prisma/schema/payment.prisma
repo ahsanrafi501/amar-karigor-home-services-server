@@ -2,8 +2,8 @@ model Payment {
     id                    String          @id @default(uuid())
     amount                Float
     paymentMethod         String          @db.VarChar(255)
-    sslCommerceCustomerId String          @db.VarChar(255)
-    sslcommerceTranId     String          @db.VarChar(255)
+    sslCommerceCustomerId String ?         @db.VarChar(255)
+    sslcommerceTranId     String  @unique         @db.VarChar(255)
     paidAt                DateTime        @default(now())
     provider              PaymentProvider @default(sslcommerz)
 

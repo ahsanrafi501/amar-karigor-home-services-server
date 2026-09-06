@@ -13,6 +13,7 @@ import { globalErrorHandler } from "./middleware/globalErrorHandler";
 import { bookingRoutes } from "./modules/booking/booking.routes";
 import { reviewRoutes } from "./modules/review/review.routes";
 import { serviceRoutes } from "./modules/service/service.routes";
+import { paymentRoutes } from "./modules/payment/payment.routes";
 
 
 
@@ -39,6 +40,7 @@ app.use("/api/technician", technicianRoutes);
 app.use("/api/admin", auth(Role.ADMIN), adminRoutes);
 app.use("/api/booking", auth(Role.USER, Role.TECHNICIAN, Role.ADMIN), bookingRoutes);
 app.use("/api/review", auth(Role.USER, Role.ADMIN), reviewRoutes)
+app.use("/api/payment", paymentRoutes)
 
 
 
