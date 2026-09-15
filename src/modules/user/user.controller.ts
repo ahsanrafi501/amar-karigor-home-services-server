@@ -4,7 +4,7 @@ import { userService } from "./user.service";
 import { sendResponse } from "../../utils/sendResponse";
 import httpStatus from "http-status"
 
-const userRegister = catchAsync(async(req: Request, res: Response, next: NextFunction) =>{
+const userRegister = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
     const payload = req.body;
 
     const user = await userService.registerUserIntoDB(payload);
@@ -19,9 +19,26 @@ const userRegister = catchAsync(async(req: Request, res: Response, next: NextFun
     })
 })
 
+const getUserProfile = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
+    const { id: userId } = req.user;
+    console.log(req.user);
+
+    const userProfile = await userService.getUserProfileFromDB(userId);
+
+    sendResponse(res, {
+        success: true,
+        statusCode: httpStatus.OK,
+        message: "User profile fetched successfully",
+        data: {
+            userProfile
+        }
+    })
+})
+
 
 
 
 export const userController = {
-    userRegister
+    userRegister,
+    getUserProfile
 }

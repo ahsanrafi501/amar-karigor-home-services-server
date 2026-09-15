@@ -1,0 +1,736 @@
+{
+  "info": {
+    "_postman_id": "e62f4e4c-2a3c-4cf3-9397-6186832717b9",
+    "name": "amar-karigor-api",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "31991091"
+  },
+  "item": [
+    {
+      "name": "user",
+      "item": [
+        {
+          "name": "register user",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"technician3\",\n    \"email\": \"technician3@gmail.com\",\n    \"password\": \"technicianpass\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/user/register",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "user",
+                "register"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get-my-profile",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/api/user/my-profile",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "user",
+                "my-profile"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "login user",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "// {\n//     \"email\": \"technician3@gmail.com\",\n//     \"password\": \"technicianpass\"\n// }\n\n{\n    \"email\": \"user1@gmail.com\",\n    \"password\": \"user1password\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/auth/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "refresh-token",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/api/auth/refresh-token",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "auth",
+                "refresh-token"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "technician",
+      "item": [
+        {
+          "name": "apply",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"bio\": \"Experienced AC and refrigerator technician with 5 years of hands-on experience.\",\n  \"experience\": 5,\n  \"availability\": \"9:00 AM - 7:00 PM\",\n  \"nidNumber\": \"19901234567890123\",\n  \"certification\": \"Diploma in Refrigeration and Air Conditioning\",\n  \"serviceArea\": \"Dhaka, Savar, Ashulia\",\n  \"permanentAddress\": \"Dohar, Dhaka\",\n  \"presentAddress\": \"Savar, Dhaka\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/technician/apply",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "technician",
+                "apply"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "update-technician-profile",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"bio\": \"Experienced AC and refrigerator technician with 5 years of hands-on experience.\",\n  \"experience\": 5,\n  \"availability\": \"9:00 AM - 7:00 PM\",\n  \"nidNumber\": \"19901234567890123\",\n  \"certification\": \"Diploma in Refrigeration and Air Conditioning\",\n  \"serviceArea\": \"Dhaka, Savar, Ashulia\",\n  \"permanentAddress\": \"Dohar, Dhaka\",\n  \"presentAddress\": \"Savar, Dhaka\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/technician/update",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "technician",
+                "update"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "update-availability",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"availability\": \"Available\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/technician/availability",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "technician",
+                "availability"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "technician-booking",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/api/technician/bookings",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "technician",
+                "bookings"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "update-booking-status",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"status\":\"COMPLETED\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/technician/bookings/3d954fa6-34da-4329-b6c3-9800ac178f19",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "technician",
+                "bookings",
+                "3d954fa6-34da-4329-b6c3-9800ac178f19"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "create-offer-service",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"price\": 9000\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/technician/offered-services/04ab3df6-ab8d-4c38-8121-5b51d6f64cc0",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "technician",
+                "offered-services",
+                "04ab3df6-ab8d-4c38-8121-5b51d6f64cc0"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get-all-technician",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/api/all-technicians",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "all-technicians"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Admin",
+      "item": [
+        {
+          "name": "Create-service-categories",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"name\": \"Electrical\",\n    \"description\": \"Electrical installation, repair, wiring, and maintenance services\"\n  },\n  {\n    \"name\": \"Plumbing\",\n    \"description\": \"Plumbing installation, repair, leakage, and maintenance services\"\n  },\n  {\n    \"name\": \"HVAC\",\n    \"description\": \"Heating, ventilation, air conditioning, and cooling services\"\n  },\n  {\n    \"name\": \"Appliance Repair\",\n    \"description\": \"Repair and maintenance services for household and kitchen appliances\"\n  },\n  {\n    \"name\": \"Carpentry\",\n    \"description\": \"Woodwork, furniture repair, installation, and custom carpentry services\"\n  },\n  {\n    \"name\": \"Painting\",\n    \"description\": \"Interior, exterior, wall painting, and decorative painting services\"\n  },\n  {\n    \"name\": \"Cleaning\",\n    \"description\": \"Residential, commercial, deep cleaning, and regular cleaning services\"\n  },\n  {\n    \"name\": \"Pest Control\",\n    \"description\": \"Pest inspection, prevention, and pest removal services\"\n  },\n  {\n    \"name\": \"Gardening\",\n    \"description\": \"Garden maintenance, landscaping, trimming, and plant care services\"\n  },\n  {\n    \"name\": \"Home Renovation\",\n    \"description\": \"Home remodeling, renovation, and improvement services\"\n  },\n  {\n    \"name\": \"Masonry\",\n    \"description\": \"Brickwork, concrete, plastering, tiling, and structural masonry services\"\n  },\n  {\n    \"name\": \"Roofing\",\n    \"description\": \"Roof installation, repair, waterproofing, and maintenance services\"\n  },\n  {\n    \"name\": \"Flooring\",\n    \"description\": \"Floor installation, repair, polishing, and maintenance services\"\n  },\n  {\n    \"name\": \"Glass & Window\",\n    \"description\": \"Glass installation, window repair, replacement, and maintenance services\"\n  },\n  {\n    \"name\": \"Locksmith\",\n    \"description\": \"Lock installation, repair, replacement, and emergency locksmith services\"\n  },\n  {\n    \"name\": \"Security Systems\",\n    \"description\": \"CCTV, alarm systems, access control, and home security installation services\"\n  },\n  {\n    \"name\": \"Internet & Networking\",\n    \"description\": \"Wi-Fi, router, network installation, configuration, and troubleshooting services\"\n  },\n  {\n    \"name\": \"Computer & Laptop Repair\",\n    \"description\": \"Computer and laptop diagnosis, repair, upgrades, and maintenance services\"\n  },\n  {\n    \"name\": \"TV & Entertainment\",\n    \"description\": \"Television, home theater, sound system installation, and repair services\"\n  },\n  {\n    \"name\": \"Furniture Assembly\",\n    \"description\": \"Furniture installation, assembly, disassembly, and relocation services\"\n  },\n  {\n    \"name\": \"Moving & Relocation\",\n    \"description\": \"Home and office moving, packing, loading, and relocation services\"\n  },\n  {\n    \"name\": \"Handyman\",\n    \"description\": \"General home maintenance, minor repairs, installations, and miscellaneous services\"\n  },\n  {\n    \"name\": \"Laundry\",\n    \"description\": \"Laundry, washing, drying, ironing, and garment care services\"\n  },\n  {\n    \"name\": \"Beauty & Personal Care\",\n    \"description\": \"At-home beauty, grooming, hair, and personal care services\"\n  },\n  {\n    \"name\": \"Automotive\",\n    \"description\": \"Vehicle maintenance, repair, detailing, and roadside assistance services\"\n  },\n  {\n    \"name\": \"Cleaning & Sanitation\",\n    \"description\": \"Sanitization, disinfection, and specialized cleaning services\"\n  },\n  {\n    \"name\": \"Waterproofing\",\n    \"description\": \"Waterproofing for roofs, bathrooms, walls, basements, and other areas\"\n  },\n  {\n    \"name\": \"Solar & Renewable Energy\",\n    \"description\": \"Solar panel installation, maintenance, and renewable energy system services\"\n  },\n  {\n    \"name\": \"Security & Smart Home\",\n    \"description\": \"Smart locks, smart devices, automation, surveillance, and smart home installation services\"\n  },\n  {\n    \"name\": \"Other\",\n    \"description\": \"Other professional services that do not fit into the available categories\"\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/admin/create-categories",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "admin",
+                "create-categories"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "create-service",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "[\n    {\n        \"name\": \"Electrical Wiring Installation\",\n        \"description\": \"Complete electrical wiring installation for homes and offices\",\n        \"categoryId\": \"296711a4-4b66-4d4c-ae89-dbae882c2dc4\"\n    },\n    {\n        \"name\": \"Ceiling Fan Installation\",\n        \"description\": \"Professional installation of ceiling fans with electrical connections\",\n        \"categoryId\": \"296711a4-4b66-4d4c-ae89-dbae882c2dc4\"\n    },\n    {\n        \"name\": \"Light Fixture Installation\",\n        \"description\": \"Installation and replacement of indoor and outdoor light fixtures\",\n        \"categoryId\": \"296711a4-4b66-4d4c-ae89-dbae882c2dc4\"\n    },\n    {\n        \"name\": \"Switch and Socket Repair\",\n        \"description\": \"Repair and replacement of damaged electrical switches and sockets\",\n        \"categoryId\": \"296711a4-4b66-4d4c-ae89-dbae882c2dc4\"\n    },\n    {\n        \"name\": \"Water Pipe Leak Repair\",\n        \"description\": \"Detection and repair of leaking water pipes and connections\",\n        \"categoryId\": \"af4a041b-bbc8-4ff3-8db7-5df9234bad61\"\n    },\n    {\n        \"name\": \"Bathroom Plumbing Repair\",\n        \"description\": \"Complete plumbing repair and maintenance for bathroom fixtures\",\n        \"categoryId\": \"af4a041b-bbc8-4ff3-8db7-5df9234bad61\"\n    },\n    {\n        \"name\": \"Kitchen Sink Installation\",\n        \"description\": \"Professional kitchen sink installation and plumbing connection\",\n        \"categoryId\": \"af4a041b-bbc8-4ff3-8db7-5df9234bad61\"\n    },\n    {\n        \"name\": \"Toilet Repair and Installation\",\n        \"description\": \"Toilet repair, replacement, and complete installation services\",\n        \"categoryId\": \"af4a041b-bbc8-4ff3-8db7-5df9234bad61\"\n    },\n    {\n        \"name\": \"Air Conditioner Installation\",\n        \"description\": \"Professional split and window AC installation service\",\n        \"categoryId\": \"d938a4e5-70fb-4054-8c4e-c23d36b50841\"\n    },\n    {\n        \"name\": \"AC Gas Refilling\",\n        \"description\": \"Air conditioner refrigerant gas refill and pressure checking\",\n        \"categoryId\": \"d938a4e5-70fb-4054-8c4e-c23d36b50841\"\n    },\n    {\n        \"name\": \"AC Deep Cleaning\",\n        \"description\": \"Complete air conditioner deep cleaning and maintenance service\",\n        \"categoryId\": \"d938a4e5-70fb-4054-8c4e-c23d36b50841\"\n    },\n    {\n        \"name\": \"AC Troubleshooting\",\n        \"description\": \"Diagnosis and repair of common air conditioner problems\",\n        \"categoryId\": \"d938a4e5-70fb-4054-8c4e-c23d36b50841\"\n    },\n    {\n        \"name\": \"Refrigerator Repair\",\n        \"description\": \"Diagnosis and repair of refrigerator cooling and electrical problems\",\n        \"categoryId\": \"f5a2dee8-033b-4c40-bdbc-10e3efc3239b\"\n    },\n    {\n        \"name\": \"Washing Machine Repair\",\n        \"description\": \"Repair of washing machine drainage, motor, and electrical issues\",\n        \"categoryId\": \"f5a2dee8-033b-4c40-bdbc-10e3efc3239b\"\n    },\n    {\n        \"name\": \"Microwave Oven Repair\",\n        \"description\": \"Professional microwave oven diagnosis and repair service\",\n        \"categoryId\": \"f5a2dee8-033b-4c40-bdbc-10e3efc3239b\"\n    },\n    {\n        \"name\": \"Dishwasher Repair\",\n        \"description\": \"Dishwasher troubleshooting, repair, and maintenance service\",\n        \"categoryId\": \"f5a2dee8-033b-4c40-bdbc-10e3efc3239b\"\n    },\n    {\n        \"name\": \"Custom Furniture Making\",\n        \"description\": \"Custom wooden furniture design and manufacturing service\",\n        \"categoryId\": \"88bcf830-0ea8-4699-8e30-871604601e7f\"\n    },\n    {\n        \"name\": \"Door Repair\",\n        \"description\": \"Wooden door repair, adjustment, and maintenance service\",\n        \"categoryId\": \"88bcf830-0ea8-4699-8e30-871604601e7f\"\n    },\n    {\n        \"name\": \"Cabinet Installation\",\n        \"description\": \"Kitchen and home cabinet installation and adjustment\",\n        \"categoryId\": \"88bcf830-0ea8-4699-8e30-871604601e7f\"\n    },\n    {\n        \"name\": \"Furniture Repair\",\n        \"description\": \"Repair and restoration of damaged wooden furniture\",\n        \"categoryId\": \"88bcf830-0ea8-4699-8e30-871604601e7f\"\n    },\n    {\n        \"name\": \"Interior Wall Painting\",\n        \"description\": \"Professional painting service for interior residential walls\",\n        \"categoryId\": \"36219f78-92a7-4fb1-8687-53d022586aff\"\n    },\n    {\n        \"name\": \"Exterior House Painting\",\n        \"description\": \"Exterior painting service for houses and buildings\",\n        \"categoryId\": \"36219f78-92a7-4fb1-8687-53d022586aff\"\n    },\n    {\n        \"name\": \"Ceiling Painting\",\n        \"description\": \"Professional ceiling painting and finishing service\",\n        \"categoryId\": \"36219f78-92a7-4fb1-8687-53d022586aff\"\n    },\n    {\n        \"name\": \"Decorative Wall Painting\",\n        \"description\": \"Decorative and textured wall painting for homes and offices\",\n        \"categoryId\": \"36219f78-92a7-4fb1-8687-53d022586aff\"\n    },\n    {\n        \"name\": \"Deep House Cleaning\",\n        \"description\": \"Complete deep cleaning service for residential properties\",\n        \"categoryId\": \"d0e3a8b5-3816-48f1-bb4c-a36744b5b472\"\n    },\n    {\n        \"name\": \"Kitchen Cleaning\",\n        \"description\": \"Thorough cleaning of kitchen surfaces, cabinets, and appliances\",\n        \"categoryId\": \"d0e3a8b5-3816-48f1-bb4c-a36744b5b472\"\n    },\n    {\n        \"name\": \"Bathroom Cleaning\",\n        \"description\": \"Professional bathroom cleaning and sanitization service\",\n        \"categoryId\": \"d0e3a8b5-3816-48f1-bb4c-a36744b5b472\"\n    },\n    {\n        \"name\": \"Office Cleaning\",\n        \"description\": \"Regular and deep cleaning service for offices and workplaces\",\n        \"categoryId\": \"d0e3a8b5-3816-48f1-bb4c-a36744b5b472\"\n    },\n    {\n        \"name\": \"Cockroach Control\",\n        \"description\": \"Professional cockroach inspection and pest treatment service\",\n        \"categoryId\": \"e706a4dd-4266-4ec8-9189-a956b148f7c1\"\n    },\n    {\n        \"name\": \"Mosquito Control\",\n        \"description\": \"Mosquito inspection and treatment for residential properties\",\n        \"categoryId\": \"e706a4dd-4266-4ec8-9189-a956b148f7c1\"\n    },\n    {\n        \"name\": \"Termite Control\",\n        \"description\": \"Termite inspection, prevention, and treatment service\",\n        \"categoryId\": \"e706a4dd-4266-4ec8-9189-a956b148f7c1\"\n    },\n    {\n        \"name\": \"Lawn Maintenance\",\n        \"description\": \"Regular lawn mowing, trimming, and maintenance service\",\n        \"categoryId\": \"0ed6fd8f-8c2f-4e0f-84a5-28615c1306cc\"\n    },\n    {\n        \"name\": \"Garden Landscaping\",\n        \"description\": \"Garden landscaping and outdoor space improvement service\",\n        \"categoryId\": \"0ed6fd8f-8c2f-4e0f-84a5-28615c1306cc\"\n    },\n    {\n        \"name\": \"Tree Trimming\",\n        \"description\": \"Professional tree and branch trimming service\",\n        \"categoryId\": \"0ed6fd8f-8c2f-4e0f-84a5-28615c1306cc\"\n    },\n    {\n        \"name\": \"Kitchen Renovation\",\n        \"description\": \"Complete kitchen remodeling and renovation service\",\n        \"categoryId\": \"3c1bb3aa-8a3e-423f-8bee-3562d6ef618e\"\n    },\n    {\n        \"name\": \"Bathroom Renovation\",\n        \"description\": \"Bathroom remodeling, fixture replacement, and renovation\",\n        \"categoryId\": \"3c1bb3aa-8a3e-423f-8bee-3562d6ef618e\"\n    },\n    {\n        \"name\": \"Room Remodeling\",\n        \"description\": \"Complete room remodeling and interior improvement service\",\n        \"categoryId\": \"3c1bb3aa-8a3e-423f-8bee-3562d6ef618e\"\n    },\n    {\n        \"name\": \"Brick Wall Construction\",\n        \"description\": \"Professional brick wall construction and repair service\",\n        \"categoryId\": \"a2fd3450-fad0-4b12-9f95-2da333dfea76\"\n    },\n    {\n        \"name\": \"Concrete Work\",\n        \"description\": \"Concrete construction and repair for residential properties\",\n        \"categoryId\": \"a2fd3450-fad0-4b12-9f95-2da333dfea76\"\n    },\n    {\n        \"name\": \"Wall Plastering\",\n        \"description\": \"Professional interior and exterior wall plastering service\",\n        \"categoryId\": \"a2fd3450-fad0-4b12-9f95-2da333dfea76\"\n    },\n    {\n        \"name\": \"Roof Repair\",\n        \"description\": \"Inspection and repair of damaged residential and commercial roofs\",\n        \"categoryId\": \"38c8b0c8-620c-4cd3-a222-3f26cbb922b6\"\n    },\n    {\n        \"name\": \"Roof Waterproofing\",\n        \"description\": \"Professional waterproofing treatment for roofs and terraces\",\n        \"categoryId\": \"38c8b0c8-620c-4cd3-a222-3f26cbb922b6\"\n    },\n    {\n        \"name\": \"Roof Maintenance\",\n        \"description\": \"Regular inspection and maintenance of residential roofing systems\",\n        \"categoryId\": \"38c8b0c8-620c-4cd3-a222-3f26cbb922b6\"\n    },\n    {\n        \"name\": \"Tile Floor Installation\",\n        \"description\": \"Professional ceramic and porcelain tile floor installation\",\n        \"categoryId\": \"e272f391-e6f9-4e8f-b34b-9338e75ffc87\"\n    },\n    {\n        \"name\": \"Floor Polishing\",\n        \"description\": \"Professional floor polishing and surface restoration service\",\n        \"categoryId\": \"e272f391-e6f9-4e8f-b34b-9338e75ffc87\"\n    },\n    {\n        \"name\": \"Wooden Floor Installation\",\n        \"description\": \"Installation of wooden and laminate flooring systems\",\n        \"categoryId\": \"e272f391-e6f9-4e8f-b34b-9338e75ffc87\"\n    },\n    {\n        \"name\": \"Window Glass Replacement\",\n        \"description\": \"Replacement of broken and damaged window glass\",\n        \"categoryId\": \"e344c009-6fff-44f3-ab8d-9b3ea3740797\"\n    },\n    {\n        \"name\": \"Aluminum Window Repair\",\n        \"description\": \"Repair and adjustment of aluminum window frames and fittings\",\n        \"categoryId\": \"e344c009-6fff-44f3-ab8d-9b3ea3740797\"\n    },\n    {\n        \"name\": \"Sliding Window Installation\",\n        \"description\": \"Professional sliding window installation service\",\n        \"categoryId\": \"e344c009-6fff-44f3-ab8d-9b3ea3740797\"\n    },\n    {\n        \"name\": \"Door Lock Installation\",\n        \"description\": \"Installation of new locks for residential and commercial doors\",\n        \"categoryId\": \"5cee52c2-0eb2-4f22-8e98-f141cd469803\"\n    },\n    {\n        \"name\": \"Lock Repair\",\n        \"description\": \"Repair and replacement of damaged door locking mechanisms\",\n        \"categoryId\": \"5cee52c2-0eb2-4f22-8e98-f141cd469803\"\n    },\n    {\n        \"name\": \"Emergency Lockout Service\",\n        \"description\": \"Emergency assistance for locked or inaccessible doors\",\n        \"categoryId\": \"5cee52c2-0eb2-4f22-8e98-f141cd469803\"\n    },\n    {\n        \"name\": \"CCTV Installation\",\n        \"description\": \"Professional CCTV camera installation for homes and businesses\",\n        \"categoryId\": \"01780748-0f42-4b5a-88d4-3a87dfd50b62\"\n    },\n    {\n        \"name\": \"CCTV Maintenance\",\n        \"description\": \"Inspection and maintenance of existing CCTV surveillance systems\",\n        \"categoryId\": \"01780748-0f42-4b5a-88d4-3a87dfd50b62\"\n    },\n    {\n        \"name\": \"Home Alarm Installation\",\n        \"description\": \"Installation and configuration of home security alarm systems\",\n        \"categoryId\": \"01780748-0f42-4b5a-88d4-3a87dfd50b62\"\n    },\n    {\n        \"name\": \"WiFi Router Setup\",\n        \"description\": \"Professional WiFi router installation and configuration\",\n        \"categoryId\": \"f5663534-49ca-436e-b185-87c9650037cf\"\n    },\n    {\n        \"name\": \"Home Network Setup\",\n        \"description\": \"Complete wired and wireless home network installation\",\n        \"categoryId\": \"f5663534-49ca-436e-b185-87c9650037cf\"\n    },\n    {\n        \"name\": \"WiFi Troubleshooting\",\n        \"description\": \"Diagnosis and resolution of common WiFi connectivity problems\",\n        \"categoryId\": \"f5663534-49ca-436e-b185-87c9650037cf\"\n    },\n    {\n        \"name\": \"Laptop Repair\",\n        \"description\": \"Diagnosis and repair of laptop hardware and software problems\",\n        \"categoryId\": \"2d166248-0ce8-4eff-927f-f546f8545293\"\n    },\n    {\n        \"name\": \"Laptop SSD Upgrade\",\n        \"description\": \"Professional SSD installation and laptop storage upgrade\",\n        \"categoryId\": \"2d166248-0ce8-4eff-927f-f546f8545293\"\n    },\n    {\n        \"name\": \"Laptop RAM Upgrade\",\n        \"description\": \"RAM installation and memory upgrade for laptops\",\n        \"categoryId\": \"2d166248-0ce8-4eff-927f-f546f8545293\"\n    },\n    {\n        \"name\": \"Operating System Installation\",\n        \"description\": \"Operating system installation, configuration, and driver setup\",\n        \"categoryId\": \"2d166248-0ce8-4eff-927f-f546f8545293\"\n    },\n    {\n        \"name\": \"TV Installation\",\n        \"description\": \"Wall mounting and installation of LED and smart televisions\",\n        \"categoryId\": \"d1bf29ce-aa12-4b77-8607-5b17036da745\"\n    },\n    {\n        \"name\": \"Home Theater Installation\",\n        \"description\": \"Professional home theater and surround sound installation\",\n        \"categoryId\": \"d1bf29ce-aa12-4b77-8607-5b17036da745\"\n    },\n    {\n        \"name\": \"TV Repair\",\n        \"description\": \"Diagnosis and repair of common television hardware problems\",\n        \"categoryId\": \"d1bf29ce-aa12-4b77-8607-5b17036da745\"\n    },\n    {\n        \"name\": \"Bed Assembly\",\n        \"description\": \"Professional assembly and installation of beds and bedroom furniture\",\n        \"categoryId\": \"db6fcf3e-dd47-4381-a04d-8911a7cfe301\"\n    },\n    {\n        \"name\": \"Wardrobe Assembly\",\n        \"description\": \"Assembly and installation of wardrobes and storage furniture\",\n        \"categoryId\": \"db6fcf3e-dd47-4381-a04d-8911a7cfe301\"\n    },\n    {\n        \"name\": \"Table Assembly\",\n        \"description\": \"Professional assembly of dining, office, and study tables\",\n        \"categoryId\": \"db6fcf3e-dd47-4381-a04d-8911a7cfe301\"\n    },\n    {\n        \"name\": \"Home Moving Service\",\n        \"description\": \"Complete residential moving service including loading and unloading\",\n        \"categoryId\": \"dc10eeaa-02c0-420b-b910-c9696e9a7586\"\n    },\n    {\n        \"name\": \"Office Relocation\",\n        \"description\": \"Professional office furniture packing and relocation service\",\n        \"categoryId\": \"dc10eeaa-02c0-420b-b910-c9696e9a7586\"\n    },\n    {\n        \"name\": \"Packing and Unpacking\",\n        \"description\": \"Professional packing and unpacking service for home relocation\",\n        \"categoryId\": \"dc10eeaa-02c0-420b-b910-c9696e9a7586\"\n    },\n    {\n        \"name\": \"General Home Repair\",\n        \"description\": \"General home maintenance and minor repair services\",\n        \"categoryId\": \"3a928b5e-73a2-4326-9284-513d2d3356a3\"\n    },\n    {\n        \"name\": \"Curtain Rod Installation\",\n        \"description\": \"Installation of curtain rods and wall-mounted fixtures\",\n        \"categoryId\": \"3a928b5e-73a2-4326-9284-513d2d3356a3\"\n    },\n    {\n        \"name\": \"Wall Mounting Service\",\n        \"description\": \"Professional wall mounting for shelves, mirrors, and fixtures\",\n        \"categoryId\": \"3a928b5e-73a2-4326-9284-513d2d3356a3\"\n    },\n    {\n        \"name\": \"Wash and Fold Laundry\",\n        \"description\": \"Professional washing, drying, and folding service for clothes\",\n        \"categoryId\": \"db3d059e-1703-4e05-b30a-c653ee3ab87b\"\n    },\n    {\n        \"name\": \"Ironing Service\",\n        \"description\": \"Professional ironing and garment finishing service\",\n        \"categoryId\": \"db3d059e-1703-4e05-b30a-c653ee3ab87b\"\n    },\n    {\n        \"name\": \"Curtain Cleaning\",\n        \"description\": \"Professional washing and cleaning of household curtains\",\n        \"categoryId\": \"db3d059e-1703-4e05-b30a-c653ee3ab87b\"\n    },\n    {\n        \"name\": \"Haircut at Home\",\n        \"description\": \"Professional haircut service at the customer's home\",\n        \"categoryId\": \"f94c5b6e-1008-4101-8b1d-04068cc2a198\"\n    },\n    {\n        \"name\": \"Beard Grooming\",\n        \"description\": \"Professional beard trimming and grooming service at home\",\n        \"categoryId\": \"f94c5b6e-1008-4101-8b1d-04068cc2a198\"\n    },\n    {\n        \"name\": \"Basic Facial\",\n        \"description\": \"At-home facial cleansing and basic skincare service\",\n        \"categoryId\": \"f94c5b6e-1008-4101-8b1d-04068cc2a198\"\n    },\n    {\n        \"name\": \"Car Wash\",\n        \"description\": \"Professional exterior and interior car cleaning service\",\n        \"categoryId\": \"0cf2d236-5c30-4a91-b181-e8a848d7c3e2\"\n    },\n    {\n        \"name\": \"Car Battery Replacement\",\n        \"description\": \"On-site car battery inspection and replacement service\",\n        \"categoryId\": \"0cf2d236-5c30-4a91-b181-e8a848d7c3e2\"\n    },\n    {\n        \"name\": \"Car AC Repair\",\n        \"description\": \"Diagnosis and repair of vehicle air conditioning systems\",\n        \"categoryId\": \"0cf2d236-5c30-4a91-b181-e8a848d7c3e2\"\n    },\n    {\n        \"name\": \"Home Disinfection\",\n        \"description\": \"Professional residential disinfection and sanitization service\",\n        \"categoryId\": \"7839f44f-c9f0-4e18-ad01-d182e231e1cc\"\n    },\n    {\n        \"name\": \"Office Sanitization\",\n        \"description\": \"Professional workplace sanitization and disinfection service\",\n        \"categoryId\": \"7839f44f-c9f0-4e18-ad01-d182e231e1cc\"\n    },\n    {\n        \"name\": \"Mattress Sanitization\",\n        \"description\": \"Deep cleaning and sanitization treatment for mattresses\",\n        \"categoryId\": \"7839f44f-c9f0-4e18-ad01-d182e231e1cc\"\n    },\n    {\n        \"name\": \"Bathroom Waterproofing\",\n        \"description\": \"Professional waterproofing treatment for bathroom floors and walls\",\n        \"categoryId\": \"f82d7346-baed-4c58-baa6-e9115d67ce98\"\n    },\n    {\n        \"name\": \"Wall Waterproofing\",\n        \"description\": \"Waterproofing treatment to prevent wall dampness and leakage\",\n        \"categoryId\": \"f82d7346-baed-4c58-baa6-e9115d67ce98\"\n    },\n    {\n        \"name\": \"Basement Waterproofing\",\n        \"description\": \"Professional waterproofing solution for basement areas\",\n        \"categoryId\": \"f82d7346-baed-4c58-baa6-e9115d67ce98\"\n    },\n    {\n        \"name\": \"Solar Panel Installation\",\n        \"description\": \"Professional installation of residential solar panel systems\",\n        \"categoryId\": \"079ff50b-a236-443b-903f-82b97d03d4c6\"\n    },\n    {\n        \"name\": \"Solar Panel Maintenance\",\n        \"description\": \"Inspection, cleaning, and maintenance of solar panels\",\n        \"categoryId\": \"079ff50b-a236-443b-903f-82b97d03d4c6\"\n    },\n    {\n        \"name\": \"Smart Lock Installation\",\n        \"description\": \"Installation and configuration of smart door locking systems\",\n        \"categoryId\": \"2762be01-b08f-4057-b497-3f98de05e964\"\n    },\n    {\n        \"name\": \"Smart Home Setup\",\n        \"description\": \"Installation and configuration of smart home automation devices\",\n        \"categoryId\": \"2762be01-b08f-4057-b497-3f98de05e964\"\n    },\n    {\n        \"name\": \"General Home Service\",\n        \"description\": \"General household service and maintenance assistance\",\n        \"categoryId\": \"1168b86a-45d3-4d8e-855f-411b0d37d7b0\"\n    },\n    {\n        \"name\": \"Custom Service Request\",\n        \"description\": \"Request a customized home service that does not fit into the available service categories\",\n        \"categoryId\": \"1168b86a-45d3-4d8e-855f-411b0d37d7b0\"\n    }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/admin/create-service",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "admin",
+                "create-service"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get-all-booking",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/api/admin/bookings",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "admin",
+                "bookings"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get-all-categories",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/api/admin/categories",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "admin",
+                "categories"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "verify-technician-application",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"verificationStatus\": \"VERIFIED\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/admin/technicians/4ea8ff79-86dc-4a3c-8396-853848718d27/verification",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "admin",
+                "technicians",
+                "4ea8ff79-86dc-4a3c-8396-853848718d27",
+                "verification"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Bookings",
+      "item": [
+        {
+          "name": "create-Bookings",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n   \"startTime\": \"2026-09-02T16:45:00+06:00\",\n   \"endTime\": \"2026-09-02T17:45:00+06:00\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/booking/create/54ee35f3-5650-477f-92eb-ec98e71791d0",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "booking",
+                "create",
+                "54ee35f3-5650-477f-92eb-ec98e71791d0"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get-my-bookings",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/api/booking/my-bookings",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "booking",
+                "my-bookings"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get-my-booking-details",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/api/booking/my-bookings/3d954fa6-34da-4329-b6c3-9800ac178f19",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "booking",
+                "my-bookings",
+                "3d954fa6-34da-4329-b6c3-9800ac178f19"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Review",
+      "item": [
+        {
+          "name": "create-review",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"rating\": \"5\",\n    \"title\": \"very bad\",\n    \"description\": \"He broke my nose\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/review/8e688dcd-0396-4199-84d4-c44a724aa653",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "review",
+                "8e688dcd-0396-4199-84d4-c44a724aa653"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Public-Api",
+      "item": [
+        {
+          "name": "get-all-service",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/api/services?type=Electrical&rating=1&location=Dhaka",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "services"
+              ],
+              "query": [
+                {
+                  "key": "type",
+                  "value": "Electrical"
+                },
+                {
+                  "key": "rating",
+                  "value": "1"
+                },
+                {
+                  "key": "location",
+                  "value": "Dhaka"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get-technician-profile",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"technician3\",\n    \"email\": \"technician3@gmail.com\",\n    \"password\": \"technicianpass\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/technician/profiles?ratings=1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "technician",
+                "profiles"
+              ],
+              "query": [
+                {
+                  "key": "experience",
+                  "value": "4",
+                  "disabled": true
+                },
+                {
+                  "key": "serviceArea",
+                  "value": "Doha",
+                  "disabled": true
+                },
+                {
+                  "key": "ratings",
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get-all-service-categories",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/api/services/categories",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "services",
+                "categories"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get-technician-profile-with-reviews",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/api/technician/profiles/4ea8ff79-86dc-4a3c-8396-853848718d27",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "technician",
+                "profiles",
+                "4ea8ff79-86dc-4a3c-8396-853848718d27"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Payment",
+      "item": [
+        {
+          "name": "make-payment",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"bookingId\":\"8e688dcd-0396-4199-84d4-c44a724aa653\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/payment/initiate-payment",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "payment",
+                "initiate-payment"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
