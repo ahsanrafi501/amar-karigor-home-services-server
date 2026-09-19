@@ -383,8 +383,8 @@ To build a reliable digital marketplace where customers can easily find and book
 **Ahsan Habib**
 Software Engineering Student · Bangladesh
 
-🔗 GitHub: [github.com/your-username](https://github.com/ahsanrafi501)
-💼 LinkedIn: [linkedin.com/in/your-profile](https://www.linkedin.com/in/dewan-ahsan-habib/)
+🔗 GitHub: [github.com/habib501](https://github.com/ahsanrafi501)
+💼 LinkedIn: [linkedin.com/in/dewan-ahsan-habib](https://www.linkedin.com/in/dewan-ahsan-habib/)
 📧 Email: ahsanhabib81102@gmail.com
 
 ---
