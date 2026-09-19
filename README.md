@@ -317,7 +317,6 @@ JWT_REFRESH_EXPIRES_IN= **
 SSL_COMMERZ_STORE_ID=**
 SSL_COMMERZ_STORE_PASSWORD=**
 
-# Add any payment-gateway keys here
 ```
 
 ### 4. Generate the Prisma Client
