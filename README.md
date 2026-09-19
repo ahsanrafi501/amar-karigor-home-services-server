@@ -46,7 +46,7 @@ The goal was not just to make endpoints work, but to build a backend the way it 
 
 The backend is deployed and available at:
 
-**https://amar-karigor-home-services-server.vercel.app/**
+**https://amar-karigor-home-services-server.vercel.app**
 
 Import the collection from [`postman_collection/`](./postman_collection) to try every endpoint quickly.
 
@@ -287,7 +287,7 @@ Protected endpoints require a valid JWT and the appropriate role. The full list 
 
 ### 1. Clone the repository
 ```bash
-git clone <your-repository-url>
+git clone <https://github.com/ahsanrafi501/amar-karigor-home-services-server.git>
 cd amar-karigor-home-services-server
 ```
 
@@ -300,9 +300,22 @@ npm install
 Create a `.env` file in the project root:
 
 ```env
-DATABASE_URL="postgresql://user:password@localhost:5432/amar_karigor"
-JWT_SECRET="your_strong_jwt_secret"
-PORT=5000
+
+PORT=8000
+DATABASE_URL="postgres://********/postgres?sslmode=require"
+APP_URL=http://localhost:8000
+BCRYPT_SALT_ROUNDS=**
+
+
+JWT_ACCESS_SECRET=add secret
+JWT_REFRESH_SECRET=add secret
+JWT_ACCESS_EXPIRES_IN = **
+JWT_REFRESH_EXPIRES_IN= **
+
+
+
+SSL_COMMERZ_STORE_ID=**
+SSL_COMMERZ_STORE_PASSWORD=**
 
 # Add any payment-gateway keys here
 ```
@@ -322,7 +335,7 @@ npx prisma migrate dev
 npm run dev
 ```
 
-The API is now running at `http://localhost:5000`.
+The API is now running at `http://localhost:8000`.
 
 ### Build for production
 ```bash
@@ -371,9 +384,9 @@ To build a reliable digital marketplace where customers can easily find and book
 **Ahsan Habib**
 Software Engineering Student · Bangladesh
 
-🔗 GitHub: [github.com/your-username](https://github.com/your-username)
-💼 LinkedIn: [linkedin.com/in/your-profile](https://linkedin.com/in/your-profile)
-📧 Email: your.email@example.com
+🔗 GitHub: [github.com/your-username](https://github.com/ahsanrafi501)
+💼 LinkedIn: [linkedin.com/in/your-profile](https://www.linkedin.com/in/dewan-ahsan-habib/)
+📧 Email: ahsanhabib81102@gmail.com
 
 ---
 
