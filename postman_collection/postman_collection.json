@@ -16,7 +16,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"name\": \"technician3\",\n    \"email\": \"technician3@gmail.com\",\n    \"password\": \"technicianpass\"\n}",
+              "raw": "// {\n//     \"name\": \"technician3\",\n//     \"email\": \"technician3@gmail.com\",\n//     \"password\": \"technicianpass\"\n// }\n\n{\n    \"name\": \"admin\",\n    \"email\": \"amiadmin@gmail.com\",\n    \"password\": \"12345678\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -24,12 +24,10 @@
               }
             },
             "url": {
-              "raw": "http://localhost:8000/api/user/register",
-              "protocol": "http",
+              "raw": "{{BASE_URL}}/api/user/register",
               "host": [
-                "localhost"
+                "{{BASE_URL}}"
               ],
-              "port": "8000",
               "path": [
                 "api",
                 "user",
@@ -45,12 +43,10 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "http://localhost:8000/api/user/my-profile",
-              "protocol": "http",
+              "raw": "{{BASE_URL}}/api/user/my-profile",
               "host": [
-                "localhost"
+                "{{BASE_URL}}"
               ],
-              "port": "8000",
               "path": [
                 "api",
                 "user",
@@ -72,7 +68,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "// {\n//     \"email\": \"technician3@gmail.com\",\n//     \"password\": \"technicianpass\"\n// }\n\n{\n    \"email\": \"user1@gmail.com\",\n    \"password\": \"user1password\"\n}",
+              "raw": "// {\n//     \"email\": \"technician3@gmail.com\",\n//     \"password\": \"technicianpass\"\n// }\n\n// {\n//     \"email\": \"user1@gmail.com\",\n//     \"password\": \"user1password\"\n// }\n\n\n{\n    \"email\": \"amiadmin@gmail.com\",\n    \"password\": \"12345678\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -80,12 +76,10 @@
               }
             },
             "url": {
-              "raw": "http://localhost:8000/api/auth/login",
-              "protocol": "http",
+              "raw": "{{BASE_URL}}/api/auth/login",
               "host": [
-                "localhost"
+                "{{BASE_URL}}"
               ],
-              "port": "8000",
               "path": [
                 "api",
                 "auth",
@@ -101,12 +95,10 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "http://localhost:8000/api/auth/refresh-token",
-              "protocol": "http",
+              "raw": "{{BASE_URL}}/api/auth/refresh-token",
               "host": [
-                "localhost"
+                "{{BASE_URL}}"
               ],
-              "port": "8000",
               "path": [
                 "api",
                 "auth",
@@ -136,12 +128,10 @@
               }
             },
             "url": {
-              "raw": "http://localhost:8000/api/technician/apply",
-              "protocol": "http",
+              "raw": "{{BASE_URL}}/api/technician/apply",
               "host": [
-                "localhost"
+                "{{BASE_URL}}"
               ],
-              "port": "8000",
               "path": [
                 "api",
                 "technician",
@@ -158,7 +148,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"bio\": \"Experienced AC and refrigerator technician with 5 years of hands-on experience.\",\n  \"experience\": 5,\n  \"availability\": \"9:00 AM - 7:00 PM\",\n  \"nidNumber\": \"19901234567890123\",\n  \"certification\": \"Diploma in Refrigeration and Air Conditioning\",\n  \"serviceArea\": \"Dhaka, Savar, Ashulia\",\n  \"permanentAddress\": \"Dohar, Dhaka\",\n  \"presentAddress\": \"Savar, Dhaka\"\n}",
+              "raw": "{\n  \"bio\": \"Experienced mobile and tv technician with 5 years of hands-on experience.\",\n  \"experience\": 4,\n  \"availability\": \"3:00 AM - 2:00 PM\",\n  \"nidNumber\": \"19901234567890123\",\n  \"certification\": \"Diploma in Refrigeration and Air Conditioning\",\n  \"serviceArea\": \"Noyabari, Dohar, Dhaka\",\n  \"permanentAddress\": \"Dohar, Dhaka\",\n  \"presentAddress\": \"Savar, Dhaka\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -166,12 +156,10 @@
               }
             },
             "url": {
-              "raw": "http://localhost:3000/api/technician/update",
-              "protocol": "http",
+              "raw": "{{BASE_URL}}/api/technician/update",
               "host": [
-                "localhost"
+                "{{BASE_URL}}"
               ],
-              "port": "3000",
               "path": [
                 "api",
                 "technician",
@@ -196,12 +184,10 @@
               }
             },
             "url": {
-              "raw": "http://localhost:8000/api/technician/availability",
-              "protocol": "http",
+              "raw": "{{BASE_URL}}/api/technician/availability",
               "host": [
-                "localhost"
+                "{{BASE_URL}}"
               ],
-              "port": "8000",
               "path": [
                 "api",
                 "technician",
@@ -217,12 +203,10 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "http://localhost:8000/api/technician/bookings",
-              "protocol": "http",
+              "raw": "{{BASE_URL}}/api/technician/bookings",
               "host": [
-                "localhost"
+                "{{BASE_URL}}"
               ],
-              "port": "8000",
               "path": [
                 "api",
                 "technician",
@@ -300,12 +284,10 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "http://localhost:8000/api/all-technicians",
-              "protocol": "http",
+              "raw": "{{BASE_URL}}/api/all-technicians",
               "host": [
-                "localhost"
+                "{{BASE_URL}}"
               ],
-              "port": "8000",
               "path": [
                 "api",
                 "all-technicians"
@@ -334,12 +316,10 @@
               }
             },
             "url": {
-              "raw": "http://localhost:8000/api/admin/create-categories",
-              "protocol": "http",
+              "raw": "{{BASE_URL}}/api/admin/create-categories",
               "host": [
-                "localhost"
+                "{{BASE_URL}}"
               ],
-              "port": "8000",
               "path": [
                 "api",
                 "admin",
@@ -364,12 +344,10 @@
               }
             },
             "url": {
-              "raw": "http://localhost:3000/api/admin/create-service",
-              "protocol": "http",
+              "raw": "{{BASE_URL}}/api/admin/create-service",
               "host": [
-                "localhost"
+                "{{BASE_URL}}"
               ],
-              "port": "3000",
               "path": [
                 "api",
                 "admin",
@@ -385,12 +363,10 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "http://localhost:8000/api/admin/bookings",
-              "protocol": "http",
+              "raw": "{{BASE_URL}}/api/admin/bookings",
               "host": [
-                "localhost"
+                "{{BASE_URL}}"
               ],
-              "port": "8000",
               "path": [
                 "api",
                 "admin",
@@ -406,12 +382,10 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "http://localhost:8000/api/admin/categories",
-              "protocol": "http",
+              "raw": "{{BASE_URL}}/api/admin/categories",
               "host": [
-                "localhost"
+                "{{BASE_URL}}"
               ],
-              "port": "8000",
               "path": [
                 "api",
                 "admin",
@@ -436,12 +410,10 @@
               }
             },
             "url": {
-              "raw": "http://localhost:8000/api/admin/technicians/4ea8ff79-86dc-4a3c-8396-853848718d27/verification",
-              "protocol": "http",
+              "raw": "{{BASE_URL}}/api/admin/technicians/4ea8ff79-86dc-4a3c-8396-853848718d27/verification",
               "host": [
-                "localhost"
+                "{{BASE_URL}}"
               ],
-              "port": "8000",
               "path": [
                 "api",
                 "admin",
@@ -473,12 +445,10 @@
               }
             },
             "url": {
-              "raw": "http://localhost:8000/api/booking/create/54ee35f3-5650-477f-92eb-ec98e71791d0",
-              "protocol": "http",
+              "raw": "{{BASE_URL}}/api/booking/create/54ee35f3-5650-477f-92eb-ec98e71791d0",
               "host": [
-                "localhost"
+                "{{BASE_URL}}"
               ],
-              "port": "8000",
               "path": [
                 "api",
                 "booking",
@@ -495,12 +465,10 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "http://localhost:8000/api/booking/my-bookings",
-              "protocol": "http",
+              "raw": "{{BASE_URL}}/api/booking/my-bookings",
               "host": [
-                "localhost"
+                "{{BASE_URL}}"
               ],
-              "port": "8000",
               "path": [
                 "api",
                 "booking",
@@ -516,12 +484,10 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "http://localhost:8000/api/booking/my-bookings/3d954fa6-34da-4329-b6c3-9800ac178f19",
-              "protocol": "http",
+              "raw": "{{BASE_URL}}/api/booking/my-bookings/3d954fa6-34da-4329-b6c3-9800ac178f19",
               "host": [
-                "localhost"
+                "{{BASE_URL}}"
               ],
-              "port": "8000",
               "path": [
                 "api",
                 "booking",
@@ -552,12 +518,10 @@
               }
             },
             "url": {
-              "raw": "http://localhost:8000/api/review/8e688dcd-0396-4199-84d4-c44a724aa653",
-              "protocol": "http",
+              "raw": "{{BASE_URL}}/api/review/8e688dcd-0396-4199-84d4-c44a724aa653",
               "host": [
-                "localhost"
+                "{{BASE_URL}}"
               ],
-              "port": "8000",
               "path": [
                 "api",
                 "review",
@@ -578,12 +542,10 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "http://localhost:8000/api/services?type=Electrical&rating=1&location=Dhaka",
-              "protocol": "http",
+              "raw": "{{BASE_URL}}/api/services?type=Electrical&rating=1&location=Dhaka",
               "host": [
-                "localhost"
+                "{{BASE_URL}}"
               ],
-              "port": "8000",
               "path": [
                 "api",
                 "services"
@@ -621,12 +583,10 @@
               }
             },
             "url": {
-              "raw": "http://localhost:8000/api/technician/profiles?ratings=1",
-              "protocol": "http",
+              "raw": "{{BASE_URL}}/api/technician/profiles?ratings=1",
               "host": [
-                "localhost"
+                "{{BASE_URL}}"
               ],
-              "port": "8000",
               "path": [
                 "api",
                 "technician",
@@ -658,12 +618,10 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "http://localhost:8000/api/services/categories",
-              "protocol": "http",
+              "raw": "{{BASE_URL}}/api/services/categories",
               "host": [
-                "localhost"
+                "{{BASE_URL}}"
               ],
-              "port": "8000",
               "path": [
                 "api",
                 "services",
@@ -679,12 +637,10 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "http://localhost:8000/api/technician/profiles/4ea8ff79-86dc-4a3c-8396-853848718d27",
-              "protocol": "http",
+              "raw": "{{BASE_URL}}/api/technician/profiles/4ea8ff79-86dc-4a3c-8396-853848718d27",
               "host": [
-                "localhost"
+                "{{BASE_URL}}"
               ],
-              "port": "8000",
               "path": [
                 "api",
                 "technician",
@@ -715,12 +671,10 @@
               }
             },
             "url": {
-              "raw": "http://localhost:8000/api/payment/initiate-payment",
-              "protocol": "http",
+              "raw": "{{BASE_URL}}/api/payment/initiate-payment",
               "host": [
-                "localhost"
+                "{{BASE_URL}}"
               ],
-              "port": "8000",
               "path": [
                 "api",
                 "payment",
